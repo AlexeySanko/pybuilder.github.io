@@ -12,13 +12,14 @@ This page documents the plugins that ship with the PyBuilder distribution.
 ### Running Python Unittests
 
 *PyBuilder* ships with a plugin to execute unittests written using [Python's unittest module](http://docs.python.org/library/unittest.html)
-during the build. Use the ```python.unittest``` plugin to enable unittest support.
+during the build. Use the `python.unittest` plugin to enable unittest support.
 
-The plugin executes all test cases found in modules ending with ```_tests.py``` in the directory
-```src/unittest/python```.
+The plugin executes all test cases found in modules ending with `_tests.py` in the directory
+`src/unittest/python`.
 
 
 #### Python unittest properties
+
 <table class="table table-striped">
   <tr>
     <th>Name</th>
@@ -76,6 +77,7 @@ Use the ```python.coverage``` module to activate coverage.
 
 
 #### Coverage properties
+
 <table class="table table-striped">
   <tr>
     <th>Name</th>
@@ -600,6 +602,12 @@ Note that the `*_depends_on` methods accept the following arguments :
     <td>Optional keyword argument (<code>None</code> default). Set it to an editable URL where the dependency should be downloaded from.</td>
   </tr>
 </table>
+
+The logic of version goes as follows:
+
+* If you don't specify any version, you don't care about the version and any version will do, so PyB will get whatever version if one doesn't exist and then don't bother ever updating.
+* If you specify an exact version once it is obtained there is no point in updating it.
+* If you specify a fuzzy version, you want the latest and greatest that satisfies the expression specified. This aids rapid incompatibility detection, as PyBuilder tracks the latest version that always satisfies the version specifier.
 
 #### Install dependencies configuration
 <table class="table table-striped">
